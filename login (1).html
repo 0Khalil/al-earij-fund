@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل الدخول - صندوق آل عريج التعاوني</title>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(135deg, #0F4C3A 0%, #1A7B67 50%, #0F4C3A 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background-image: 
+                radial-gradient(circle, rgba(212, 175, 55, 0.1) 1px, transparent 1px),
+                radial-gradient(circle, rgba(212, 175, 55, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            background-position: 0 0, 25px 25px;
+            animation: patternMove 60s linear infinite;
+        }
+
+        @keyframes patternMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .login-container {
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.3);
+            width: 100%;
+            max-width: 480px;
+            padding: 3rem 2.5rem;
+            position: relative;
+            z-index: 1;
+            animation: slideUp 0.6s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .islamic-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: linear-gradient(90deg, #D4AF37 0%, #0F4C3A 50%, #D4AF37 100%);
+            border-radius: 24px 24px 0 0;
+        }
+
+        .logo-section {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-top: 1rem;
+        }
+
+        .logo-wrapper {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #0F4C3A, #1A7B67);
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 15px 40px rgba(15, 76, 58, 0.3);
+            position: relative;
+        }
+
+        .logo-wrapper::before {
+            content: '﷽';
+            position: absolute;
+            font-size: 2rem;
+            color: rgba(212, 175, 55, 0.2);
+            font-family: 'Amiri', serif;
+        }
+
+        .logo-icon {
+            font-size: 3rem;
+            color: #D4AF37;
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo-text h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #0F4C3A;
+            margin-bottom: 0.5rem;
+            font-family: 'Amiri', serif;
+        }
+
+        .logo-text p {
+            font-size: 1rem;
+            color: #737373;
+            font-weight: 500;
+        }
+
+        .form-group {
+            margin-bottom: 1.75rem;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #0F4C3A;
+            margin-bottom: 0.75rem;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .input-icon {
+            position: absolute;
+            right: 1.25rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #A3A3A3;
+            font-size: 1.25rem;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 1.125rem 1.25rem 1.125rem 3.5rem;
+            border: 2px solid #E5E5E5;
+            border-radius: 14px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: #FAFAFA;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #0F4C3A;
+            background: white;
+            box-shadow: 0 0 0 5px rgba(15, 76, 58, 0.08);
+        }
+
+        .form-input::placeholder {
+            color: #A3A3A3;
+        }
+
+        .password-toggle {
+            position: absolute;
+            left: 1.25rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #A3A3A3;
+            cursor: pointer;
+            font-size: 1.25rem;
+            padding: 0.5rem;
+            transition: color 0.2s;
+        }
+
+        .password-toggle:hover {
+            color: #0F4C3A;
+        }
+
+        .btn-login {
+            width: 100%;
+            padding: 1.25rem;
+            background: linear-gradient(135deg, #0F4C3A, #1A7B67);
+            color: white;
+            border: none;
+            border-radius: 14px;
+            font-family: inherit;
+            font-size: 1.125rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(15, 76, 58, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-top: 2rem;
+        }
+
+        .btn-login:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(15, 76, 58, 0.4);
+        }
+
+        .btn-login:active {
+            transform: translateY(-1px);
+        }
+
+        .btn-login.loading {
+            pointer-events: none;
+            opacity: 0.8;
+        }
+
+        .spinner {
+            width: 22px;
+            height: 22px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 0.7s linear infinite;
+        }
+
+        @keyframes spin {
+            100% { transform: rotate(360deg); }
+        }
+
+        .alert {
+            padding: 1.125rem 1.25rem;
+            border-radius: 12px;
+            margin-bottom: 1.75rem;
+            display: flex;
+            align-items: start;
+            gap: 1rem;
+            animation: slideDown 0.4s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .alert.error {
+            background: #FEF2F2;
+            border: 2px solid #FCA5A5;
+            color: #DC2626;
+        }
+
+        .alert.success {
+            background: #F0FDF4;
+            border: 2px solid #86EFAC;
+            color: #16A34A;
+        }
+
+        .alert i {
+            font-size: 1.5rem;
+            margin-top: 0.125rem;
+        }
+
+        .alert-content {
+            flex: 1;
+        }
+
+        .alert-title {
+            font-weight: 700;
+            margin-bottom: 0.375rem;
+            font-size: 1rem;
+        }
+
+        .alert-message {
+            font-size: 0.9rem;
+            opacity: 0.95;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 2.5rem;
+            padding-top: 2rem;
+            border-top: 2px solid #F5F5F5;
+        }
+
+        .footer p {
+            color: #737373;
+            font-size: 0.875rem;
+            line-height: 1.6;
+        }
+
+        .footer .copyright {
+            margin-top: 0.75rem;
+            font-weight: 600;
+            color: #0F4C3A;
+        }
+
+        @media (max-width: 480px) {
+            .login-container {
+                padding: 2.5rem 1.75rem;
+            }
+
+            .logo-text h1 {
+                font-size: 1.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="islamic-pattern"></div>
+
+        <div class="logo-section">
+            <div class="logo-wrapper">
+                <i class="fas fa-hand-holding-usd logo-icon"></i>
+            </div>
+            <div class="logo-text">
+                <h1>صندوق آل عريج التعاوني</h1>
+                <p>نظام إدارة الاشتراكات المتقدم</p>
+            </div>
+        </div>
+
+        <div id="alertContainer"></div>
+
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="username" class="form-label">اسم المستخدم</label>
+                <div class="input-wrapper">
+                    <i class="fas fa-user input-icon"></i>
+                    <input 
+                        type="text" 
+                        id="username" 
+                        class="form-input" 
+                        placeholder="أدخل اسم المستخدم"
+                        required
+                        autocomplete="username"
+                    >
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="password" class="form-label">كلمة المرور</label>
+                <div class="input-wrapper">
+                    <i class="fas fa-lock input-icon"></i>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        class="form-input" 
+                        placeholder="أدخل كلمة المرور"
+                        required
+                        autocomplete="current-password"
+                    >
+                    <button type="button" class="password-toggle" onclick="togglePassword()">
+                        <i class="fas fa-eye" id="toggleIcon"></i>
+                    </button>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-login" id="loginBtn">
+                <span>تسجيل الدخول</span>
+                <i class="fas fa-arrow-left"></i>
+            </button>
+        </form>
+
+        <div class="footer">
+            <p>مرحباً بك في نظام إدارة صندوق آل عريج التعاوني</p>
+            <p class="copyright">صُنع بواسطة صندوق آل عريج التعاوني<br>جميع الحقوق محفوظة © 2026</p>
+        </div>
+    </div>
+
+    <script>
+        const users = {
+            admin: { password: 'admin2026', role: 'admin', name: 'المدير العام' },
+            khalil: { password: 'khalil2026', role: 'admin', name: 'خليل العريج' }
+        };
+
+        function showAlert(type, title, message) {
+            const alertHtml = `
+                <div class="alert ${type}">
+                    <i class="fas fa-${type === 'error' ? 'exclamation-circle' : 'check-circle'}"></i>
+                    <div class="alert-content">
+                        <div class="alert-title">${title}</div>
+                        <div class="alert-message">${message}</div>
+                    </div>
+                </div>
+            `;
+            document.getElementById('alertContainer').innerHTML = alertHtml;
+            setTimeout(() => {
+                document.getElementById('alertContainer').innerHTML = '';
+            }, 5000);
+        }
+
+        function togglePassword() {
+            const passwordInput = document.getElementById('password');
+            const toggleIcon = document.getElementById('toggleIcon');
+
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleIcon.classList.remove('fa-eye');
+                toggleIcon.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                toggleIcon.classList.remove('fa-eye-slash');
+                toggleIcon.classList.add('fa-eye');
+            }
+        }
+
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value;
+            const loginBtn = document.getElementById('loginBtn');
+
+            loginBtn.classList.add('loading');
+            loginBtn.innerHTML = '<div class="spinner"></div><span>جاري التحقق...</span>';
+
+            setTimeout(() => {
+                if (users[username] && users[username].password === password) {
+                    localStorage.setItem('currentUser', JSON.stringify({
+                        username: username,
+                        role: users[username].role,
+                        name: users[username].name,
+                        loginTime: new Date().toISOString()
+                    }));
+
+                    showAlert('success', 'نجح تسجيل الدخول!', `مرحباً ${users[username].name}`);
+
+                    setTimeout(() => {
+                        window.location.href = 'home.html';
+                    }, 1000);
+                } else {
+                    loginBtn.classList.remove('loading');
+                    loginBtn.innerHTML = '<span>تسجيل الدخول</span><i class="fas fa-arrow-left"></i>';
+                    showAlert('error', 'خطأ في تسجيل الدخول', 'اسم المستخدم أو كلمة المرور غير صحيحة');
+                }
+            }, 1200);
+        });
+
+        if (localStorage.getItem('currentUser')) {
+            const user = JSON.parse(localStorage.getItem('currentUser'));
+            showAlert('success', 'تم تسجيل الدخول مسبقاً', `مرحباً ${user.name} - سيتم توجيهك...`);
+            setTimeout(() => {
+                window.location.href = 'home.html';
+            }, 1500);
+        }
+    </script>
+</body>
+</html>

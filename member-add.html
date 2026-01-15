@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إضافة مشترك - صندوق آل عريج</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="app.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Cairo', sans-serif; background: #F5F5F5; min-height: 100vh; padding: 2rem; }
+        .container { max-width: 600px; margin: 0 auto; background: white; padding: 3rem; border-radius: 24px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); }
+        h1 { color: #0F4C3A; margin-bottom: 2rem; }
+        .form-group { margin-bottom: 1.5rem; }
+        .form-label { display: block; font-weight: 700; color: #0F4C3A; margin-bottom: 0.5rem; }
+        .form-input { width: 100%; padding: 1rem; border: 2px solid #E5E5E5; border-radius: 12px; font-family: inherit; font-size: 1rem; }
+        .form-input:focus { outline: none; border-color: #0F4C3A; }
+        .btn { padding: 1rem 2rem; border: none; border-radius: 12px; font-family: inherit; font-size: 1rem; font-weight: 700; cursor: pointer; transition: 0.3s; }
+        .btn-primary { background: #0F4C3A; color: white; width: 100%; }
+        .btn-primary:hover { background: #1A7B67; }
+        .btn-secondary { background: #E5E5E5; color: #0F4C3A; margin-top: 1rem; width: 100%; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>➕ إضافة مشترك جديد</h1>
+        <form id="addForm">
+            <div class="form-group">
+                <label class="form-label">الاسم الكامل</label>
+                <input type="text" class="form-input" name="name" required>
+            </div>
+            <div class="form-group">
+                <label class="form-label">العائلة</label>
+                <input type="text" class="form-input" name="family" required>
+            </div>
+            <div class="form-group">
+                <label class="form-label">رقم الجوال</label>
+                <input type="tel" class="form-input" name="phone" placeholder="05xxxxxxxx" required>
+            </div>
+            <div class="form-group">
+                <label class="form-label">الحالة</label>
+                <select class="form-input" name="status" required>
+                    <option value="محدّث">محدّث</option>
+                    <option value="متقدم">متقدم</option>
+                    <option value="تحذير">تحذير</option>
+                    <option value="متأخر">متأخر</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="form-label">الاشتراك الشهري</label>
+                <input type="number" class="form-input" name="monthlyPayment" value="500" required>
+            </div>
+            <button type="submit" class="btn btn-primary">💾 حفظ المشترك</button>
+            <button type="button" class="btn btn-secondary" onclick="window.location.href='members.html'">❌ إلغاء</button>
+        </form>
+    </div>
+    <script>
+        document.getElementById('addForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const newMember = {
+                name: formData.get('name'),
+                family: formData.get('family'),
+                phone: formData.get('phone'),
+                status: formData.get('status'),
+                monthlyPayment: parseInt(formData.get('monthlyPayment')),
+                lastPayment: new Date().toISOString().split('T')[0]
+            };
+            addMember(newMember);
+            showNotification('تم إضافة المشترك بنجاح!', 'success');
+            setTimeout(() => window.location.href = 'members.html', 1500);
+        });
+    </script>
+</body>
+</html>

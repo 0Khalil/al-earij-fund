@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الرئيسية - صندوق آل عريج التعاوني</title>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(135deg, #0F4C3A 0%, #1A7B67 100%);
+            min-height: 100vh;
+            color: white;
+        }
+
+        .islamic-header {
+            background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, transparent 100%);
+            padding: 2rem 1.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .islamic-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(212, 175, 55, 0.05) 10px, rgba(212, 175, 55, 0.05) 20px),
+                repeating-linear-gradient(-45deg, transparent, transparent 10px, rgba(212, 175, 55, 0.05) 10px, rgba(212, 175, 55, 0.05) 20px);
+            pointer-events: none;
+        }
+
+        .basmala {
+            font-family: 'Amiri', serif;
+            font-size: 2.5rem;
+            color: #D4AF37;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        .main-title {
+            font-family: 'Amiri', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            position: relative;
+            z-index: 1;
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            opacity: 0.95;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .user-welcome {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .user-welcome i {
+            font-size: 1.5rem;
+            color: #D4AF37;
+        }
+
+        .logout-btn {
+            background: rgba(220, 38, 38, 0.2);
+            color: white;
+            border: 2px solid rgba(220, 38, 38, 0.5);
+            padding: 0.625rem 1.5rem;
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .logout-btn:hover {
+            background: rgba(220, 38, 38, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        .vision-mission {
+            background: white;
+            color: #171717;
+            border-radius: 24px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .vision-mission::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.1), transparent);
+            border-radius: 50%;
+        }
+
+        .section-title {
+            font-family: 'Amiri', serif;
+            font-size: 2rem;
+            color: #0F4C3A;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-title i {
+            color: #D4AF37;
+            font-size: 1.75rem;
+        }
+
+        .content-box {
+            background: #F5F5F5;
+            padding: 2rem;
+            border-radius: 16px;
+            margin-bottom: 1.5rem;
+            border-right: 5px solid #D4AF37;
+            position: relative;
+            z-index: 1;
+        }
+
+        .content-box h3 {
+            color: #0F4C3A;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .content-box p {
+            line-height: 1.8;
+            color: #404040;
+            font-size: 1.05rem;
+        }
+
+        .content-box ul {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .content-box li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #E5E5E5;
+            display: flex;
+            align-items: start;
+            gap: 0.75rem;
+        }
+
+        .content-box li:last-child {
+            border-bottom: none;
+        }
+
+        .content-box li i {
+            color: #0F4C3A;
+            margin-top: 0.25rem;
+        }
+
+        .main-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .main-card {
+            background: white;
+            color: #171717;
+            border-radius: 24px;
+            padding: 2.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .main-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #0F4C3A, #D4AF37, #0F4C3A);
+        }
+
+        .main-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+        }
+
+        .card-icon {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, #0F4C3A, #1A7B67);
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(15, 76, 58, 0.3);
+            transition: all 0.4s;
+        }
+
+        .main-card:hover .card-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .card-icon i {
+            font-size: 3rem;
+            color: #D4AF37;
+        }
+
+        .card-title {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: #0F4C3A;
+            margin-bottom: 1rem;
+        }
+
+        .card-description {
+            color: #737373;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-arrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #0F4C3A;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .footer {
+            background: rgba(0,0,0,0.2);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            text-align: center;
+            margin-top: 4rem;
+            border-radius: 24px 24px 0 0;
+        }
+
+        .footer p {
+            margin: 0.5rem 0;
+            opacity: 0.9;
+        }
+
+        .footer .copyright {
+            font-weight: 700;
+            margin-top: 1rem;
+            color: #D4AF37;
+        }
+
+        @media (max-width: 768px) {
+            .basmala {
+                font-size: 1.75rem;
+            }
+
+            .main-title {
+                font-size: 2rem;
+            }
+
+            .subtitle {
+                font-size: 1rem;
+            }
+
+            .vision-mission {
+                padding: 2rem 1.5rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .main-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="islamic-header">
+        <div class="basmala">﷽</div>
+        <h1 class="main-title">صندوق آل عريج التعاوني</h1>
+        <p class="subtitle">نظام إدارة الاشتراكات المتقدم</p>
+        <div class="user-welcome">
+            <i class="fas fa-user-circle"></i>
+            <span>مرحباً، <strong id="userName">المدير</strong></span>
+        </div>
+        <button class="logout-btn" onclick="logout()">
+            <i class="fas fa-sign-out-alt"></i>
+            تسجيل الخروج
+        </button>
+    </div>
+
+    <div class="container">
+        <div class="vision-mission">
+            <div class="section-title">
+                <i class="fas fa-star-and-crescent"></i>
+                <span>رؤيتنا ورسالتنا وأهدافنا</span>
+            </div>
+
+            <div class="content-box">
+                <h3>🎯 رؤيتنا</h3>
+                <p>أن نكون الصندوق التعاوني الرائد في تقديم الدعم المالي والاجتماعي لأفراد عائلة آل عريج، ونموذجاً يُحتذى به في التكافل والتعاون الأسري.</p>
+            </div>
+
+            <div class="content-box">
+                <h3>📜 رسالتنا</h3>
+                <p>نسعى لتعزيز روح التكافل والتعاون بين أفراد العائلة من خلال نظام مالي متطور وشفاف يضمن الاستدامة المالية ويوفر الدعم المستمر لجميع المشتركين.</p>
+            </div>
+
+            <div class="content-box">
+                <h3>🌟 أهدافنا</h3>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> <span>تعزيز التكافل الاجتماعي والمالي بين أفراد العائلة</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span>توفير نظام إدارة احترافي وشفاف للاشتراكات</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span>ضمان الاستدامة المالية للصندوق على المدى البعيد</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span>تقديم الدعم المالي للمحتاجين من أفراد العائلة</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span>تطوير استثمارات الصندوق لتحقيق عوائد مستدامة</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span>تعزيز الشفافية والمساءلة في إدارة الأموال</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="main-cards">
+            <div class="main-card" onclick="navigateTo('dashboard.html')">
+                <div class="card-icon">
+                    <i class="fas fa-chart-pie"></i>
+                </div>
+                <h2 class="card-title">لوحة المعلومات</h2>
+                <p class="card-description">عرض الإحصائيات العامة وأهم المؤشرات والنقاط الرئيسية للصندوق</p>
+                <span class="card-arrow">
+                    الدخول
+                    <i class="fas fa-arrow-left"></i>
+                </span>
+            </div>
+
+            <div class="main-card" onclick="navigateTo('analytics.html')">
+                <div class="card-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h2 class="card-title">البيانات والإحصائيات</h2>
+                <p class="card-description">تحليلات متقدمة وتوقعات مستقبلية ورؤى ذكية لاتخاذ القرار</p>
+                <span class="card-arrow">
+                    الدخول
+                    <i class="fas fa-arrow-left"></i>
+                </span>
+            </div>
+
+            <div class="main-card" onclick="navigateTo('members.html')">
+                <div class="card-icon">
+                    <i class="fas fa-users-cog"></i>
+                </div>
+                <h2 class="card-title">إدارة المشتركين</h2>
+                <p class="card-description">إدارة كاملة للمشتركين مع إمكانية الإضافة والتعديل والتواصل</p>
+                <span class="card-arrow">
+                    الدخول
+                    <i class="fas fa-arrow-left"></i>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>صندوق آل عريج التعاوني - نظام إدارة الاشتراكات المتقدم</p>
+        <p class="copyright">صُنع بواسطة صندوق آل عريج التعاوني<br>جميع الحقوق محفوظة © 2026</p>
+    </div>
+
+    <script>
+        // التحقق من تسجيل الدخول
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        if (!currentUser) {
+            window.location.href = 'login.html';
+        } else {
+            document.getElementById('userName').textContent = currentUser.name;
+        }
+
+        function navigateTo(page) {
+            window.location.href = page;
+        }
+
+        function logout() {
+            if (confirm('هل أنت متأكد من تسجيل الخروج؟')) {
+                localStorage.removeItem('currentUser');
+                window.location.href = 'login.html';
+            }
+        }
+    </script>
+</body>
+</html>
